@@ -531,7 +531,11 @@
         self.el = document.createElement('div');
         self.el.className = 'pika-single' + (opts.isRTL ? ' is-rtl' : '') + (opts.theme ? ' ' + opts.theme : '');
 
-        addEvent(self.el, 'ontouchend' in document ? 'touchend' : 'mousedown', self._onMouseDown, true);
+        // Issue with touchscreen and mouse behaviour
+        //addEvent(self.el, 'ontouchend' in document ? 'touchend' : 'mousedown', self._onMouseDown, true);
+        //replace with:
+        addEvent(self.el, 'mousedown', self._onMouseDown, true);
+        //end replace
         addEvent(self.el, 'change', self._onChange);
 
         if (opts.field) {
